@@ -2,7 +2,7 @@
 """
 Created on Thu Mar 23 16:17:04 2023
 
-@author: timothy
+@author: Timothy and Celine
 """
 
 import time
