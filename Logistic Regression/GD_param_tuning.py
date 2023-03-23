@@ -245,104 +245,43 @@ for i in range(100):
     acc = predict_lr(X_test,y_test,temp)
     accuracy01.append(acc[0])
 
-#%% plotting the accuracy of the different learning rates
-x_axis = np.arange(1,101)
-x_axis = x_axis.tolist()
+    
+ #%% 
+# x axis values (for plotting)
+x_axis_alpha = [0.01, 0.25, 0.5, 0.75, 1]
 
-# alpha = 1
-plt.figure()
-plt.plot(x_axis, accuracy1, color = 'red')
-plt.title('Accuracy alpha = 1')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.75
-plt.figure()
-plt.plot(x_axis, accuracy75, color = 'red')
-plt.title('Accuracy alpha = 0.75')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.5
-plt.figure()
-plt.plot(x_axis, accuracy5, color = 'red')
-plt.title('Accuracy alpha = 0.5')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.25
-plt.figure()
-plt.plot(x_axis, accuracy25, color = 'red')
-plt.title('Accuracy alpha = 0.25')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.01
-plt.figure()
-plt.plot(x_axis, accuracy01, color = 'red')
-plt.title('Accuracy alpha = 0.1')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-#%% 
+# convert to np array in order to find mean
 acc1_np = np.array(accuracy1)
 acc75_np = np.array(accuracy75)
 acc5_np = np.array(accuracy5)
 acc25_np = np.array(accuracy25)
 acc01_np = np.array(accuracy01)
-avg_acc_list = [acc1_np.mean(), acc75_np.mean(), acc5_np.mean(), acc25_np.mean(), acc01_np.mean()]
 
-x_axis_acc = np.arange(1,6)
-x_axis_acc = x_axis_acc.tolist()
+# list of average accurasies for the five different alphas
+avg_acc_list = [acc01_np.mean(), acc25_np.mean(), acc5_np.mean(), acc75_np.mean(), acc1_np.mean()]
 
+# plot ACCURACY
 plt.figure()
-plt.plot(x_axis_acc, avg_acc_list, color = 'red')
+plt.plot(x_axis_alpha, avg_acc_list, color = 'red')
 plt.title('Average accuracy for each alpha value')
-plt.xlabel('Alpha (index)')
-plt.ylabel('Time')
+plt.xlabel('Alpha')
+plt.ylabel('Accuracy')
 
 
+# convert to np array in order to find mean
 time1_np = np.array(time1)
 time75_np = np.array(time75)
 time5_np = np.array(time5)
 time25_np = np.array(time25)
 time01_np = np.array(time01)
 
-time1_mean = time1_np.mean()
-time75_mean = time75_np.mean()
-time5_mean = time5_np.mean()
-time25_mean = time25_np.mean()
-time01_mean = time01_np.mean()
+# list of average times for the five different alphas
+avg_time_list = [time01_np.mean(), time25_np.mean(), time5_np.mean(), time75_np.mean(),time1_np.mean()]
 
-avg_time_list = [time1_np.mean(), time75_np.mean(), time5_np.mean(), time25_np.mean(), time01_np.mean()]
-
-
-x_axis_time = np.arange(1,6)
-x_axis_time = x_axis_time.tolist()
+# plot TIME
 plt.figure()
-plt.plot(x_axis_time, avg_time_list, color = 'red')
+plt.plot(x_axis_alpha, avg_time_list, color = 'red')
 plt.title('Average time taken for each alpha value')
-plt.xlabel('Alpha (index)')
+plt.xlabel('Alpha')
 plt.ylabel('Time')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
