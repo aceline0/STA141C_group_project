@@ -82,7 +82,8 @@ def Logistics_Regression(X, y, learningrate, eps):
         converge = tolerance_check(theta,theta1,eps) # checks convergence
         theta = theta1
         iterations += 1
-    #Calculate the loss for each training instance
+    
+        # Calculate loss for each training instance
         cost_lst.append(cost_value)
     
     return theta
@@ -286,44 +287,6 @@ for i in range(100):
     accuracy01.append(acc[0])
 
 
-#%% plotting the accuracy of the different learning rates
-x_axis = np.arange(1,101)
-x_axis = x_axis.tolist()
-
-# alpha = 1
-plt.figure()
-plt.plot(x_axis, accuracy1, color = 'red')
-plt.title('Accuracy alpha = 1')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.75
-plt.figure()
-plt.plot(x_axis, accuracy75, color = 'red')
-plt.title('Accuracy alpha = 0.75')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.5
-plt.figure()
-plt.plot(x_axis, accuracy5, color = 'red')
-plt.title('Accuracy alpha = 0.5')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.25
-plt.figure()
-plt.plot(x_axis, accuracy25, color = 'red')
-plt.title('Accuracy alpha = 0.25')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
-
-# alpha = 0.01
-plt.figure()
-plt.plot(x_axis, accuracy01, color = 'red')
-plt.title('Accuracy alpha = 0.1')
-plt.xlabel('Number of iterations')
-plt.ylabel('Accuracy')
 
 #%% 
 # x axis values (for plotting)
