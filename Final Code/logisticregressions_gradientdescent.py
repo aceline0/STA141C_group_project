@@ -1,10 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 23 16:17:04 2023
+'''
+*   Algorithm: Logistic Regression with Gradinet Descent
+*   Code Partially Adapted From: Phong Hoangg,
+*   Source: https://github.com/PhongHoangg/Gradient-Descent-for-Logistics-Regression/blob/main/Gradient%20Descent%20for%20Logistics%20Regression.ipynb
+*   Authored Date: July 31, 2021
+'''
+## First method for Logistic Regression. 
+## Maximizes loss function 
+## Tested to see which learning rate is optimal in terms of accuray and time
 
-@author: Phong Hoangg, Timothy Shen, Celine Nygaard Weiseth
-"""
-
+# libraries
 import time
 import numpy as np
 from math import e
@@ -374,53 +378,4 @@ gd_25 = Logistics_Regression_plot_cost(X_train,y_train, 0.25, eps)
 gd_5 = Logistics_Regression_plot_cost(X_train,y_train, 0.5, eps)
 gd_75 = Logistics_Regression_plot_cost(X_train,y_train, 0.75, eps)
 gd_1 = Logistics_Regression_plot_cost(X_train,y_train, 1, eps)
-
-#%%
-# Generated Dataset - 10 000 and 50 000 observations
-from sklearn.datasets import make_classification
-
-x,y = make_classification(n_samples=10000, n_features=36, n_informative=36, 
-                    n_redundant=0, n_repeated=0, n_classes=2, n_clusters_per_class=2,
-                          class_sep=1.5)
-x_10 = pd.DataFrame(x)
-y_10 = pd.DataFrame(y)
-
-alpha = 0.01
-eps = 10**(-3)
-time_sim1 = []
-acc_sim1 = []
-#%%
-for i in range(100):
-    X_train, X_test, y_train, y_test = train_test_split(x_10, y_10, random_state = 10+i, test_size=0.20, shuffle=True)
-    
-    # make_classification has an inbuilt scaler, but i had shape errors without
-    sc = StandardScaler()
-    X_train = sc.fit_transform(X_train)
-    X_test = sc.transform(X_test)
-    #eps = 10**(-3)
-    
-    start_time_sim1 = time.time()
-    beta = Logistics_Regression(X_train, y_train, alpha, eps)
-    end_time_sim1 = time.time()
-    
-    timediff_sim1 = end_time_sim1 - start_time_sim1
-    time_sim1.append(timediff_sim1)
-    temp = beta[1:]
-    acc = predict_lr(X_test, y_test, temp)
-    acc_sim1.append(acc[0])
-
-print(np.mean(acc_sim1), np.var(acc_sim1), np.mean(time_sim1), np.var(time_sim1))
-
-
-
-
-
-
-
-
-
-
-
-
-
 
